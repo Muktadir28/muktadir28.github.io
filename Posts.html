@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Logs | Md. Muktadir</title>
+    
+    <!-- Tailwind CSS for Layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base styles moved to styles.css */
+    </style>
+</head>
+<body>
+
+    <div id="custom-cursor"></div>
+    <div class="spotlight"></div>
+
+    <!-- MAIN WRAPPER -->
+    <main id="app-root" class="min-h-screen">
+        <div class="max-w-5xl mx-auto px-6 py-12">
+            <nav class="flex justify-between items-center mb-24">
+                <a href="index.html" class="font-code text-xs text-zinc-500 hover:text-white transition-colors btn-hover">
+                    ← Back to Portfolio
+                </a>
+                <button onclick="toggleModal(true)" class="bg-white text-black px-8 py-3 font-bold text-[10px] uppercase tracking-widest hover:bg-zinc-200 transition-colors btn-hover">
+                    Commit Post
+                </button>
+            </nav>
+
+            <h1 class="text-6xl font-main font-light mb-20 tracking-tighter">Engineering Logs</h1>
+
+            <div id="posts-container" class="space-y-32">
+                <!-- Posts injected here via JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL -->
+    <div id="modal-overlay" class="fixed inset-0 z-[1000] bg-black/95 hidden items-center justify-center p-6 backdrop-blur-md overflow-y-auto">
+        <div class="bg-zinc-950 border border-zinc-900 w-full max-w-xl p-10 rounded-xl my-auto">
+            <div class="flex justify-between items-center mb-10">
+                <h4 class="font-main font-bold text-xl uppercase tracking-tighter text-white">Secure Uplink</h4>
+                <button onclick="toggleModal(false)" class="text-zinc-500 hover:text-white transition-colors p-2 btn-hover">✕</button>
+            </div>
+            
+            <form id="post-form" class="space-y-6">
+                <input type="password" id="admin-pass" placeholder="Access Credential" class="w-full bg-zinc-900 border border-zinc-900 p-4 rounded text-sm text-white focus:border-white outline-none transition-colors" required>
+                <input type="text" id="post-title" placeholder="Entry Title" class="w-full bg-zinc-900 border border-zinc-900 p-4 rounded text-sm text-white focus:border-white outline-none transition-colors" required>
+                <textarea id="post-content" rows="4" placeholder="Log Content..." class="w-full bg-zinc-900 border border-zinc-900 p-4 rounded text-sm text-white focus:border-white outline-none transition-colors" required></textarea>
+                
+                <div class="space-y-2">
+                    <label class="text-[10px] font-code text-zinc-500 uppercase">Attach Media</label>
+                    <div onclick="document.getElementById('file-input').click()" class="file-upload-zone cursor-pointer p-8 rounded-lg flex flex-col items-center justify-center text-center space-y-2 btn-hover">
+                        <div id="preview-container" class="hidden w-full flex flex-col items-center space-y-3">
+                            <div id="media-preview" class="w-24 h-24 overflow-hidden rounded bg-black border border-zinc-900"></div>
+                            <span class="text-[10px] font-code text-zinc-500" onclick="removeMedia(event)">Remove</span>
+                        </div>
+                        <div id="upload-prompt">
+                            <span class="text-zinc-400 text-sm">Select Image or Video</span>
+                            <span class="text-zinc-600 text-[10px] font-code uppercase block">Local Explorer</span>
+                        </div>
+                    </div>
+                    <input type="file" id="file-input" class="hidden" accept="image/*,video/*">
+                </div>
+
+                <button type="submit" class="w-full py-5 bg-white text-black font-bold uppercase text-[10px] tracking-widest hover:bg-zinc-200 transition-all btn-hover">
+                    Establish Connection
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ERROR NOTIFICATION -->
+    <div id="error-toast" class="fixed top-8 left-1/2 -translate-x-1/2 z-[1100] bg-zinc-900 text-white px-6 py-2 rounded-full text-xs font-code shadow-2xl opacity-0 pointer-events-none transition-opacity">
+        Invalid Credentials
+    </div>
+
+    <footer class="max-w-7xl mx-auto px-6 mt-32 pb-24 pt-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center text-[10px] font-code text-zinc-600 gap-6">
+        <span> 2026 MD. MUKTADIR // ENGINEERING LOGS</span>
+        <div class="flex gap-10">
+            <a href="https://github.com/Muktadir28" target="_blank" class="hover:text-white transition-colors btn-hover">Github</a>
+            <a href="https://linkedin.com/in/mdmuktadir" target="_blank" class="hover:text-white transition-colors btn-hover">LinkedIn</a>
+            <a href="mailto:mdmuktadir028@gmail.com" class="hover:text-white transition-colors btn-hover">Contact</a>
+        </div>
+    </footer>
+
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
